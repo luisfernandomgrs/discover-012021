@@ -113,8 +113,28 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
+        //  valores como 1250,84 | 110,84 - 110,89... geram bug no valor calculado.
 
-        value = Number(value.replace(/\,\./,"")) * 100
+        let iIndexOf = 0;
+
+        iIndexOf = value.indexOf(".")
+        if (iIndexOf === 0) iIndexOf = value.indexOf(",")
+
+        if (iIndexOf > 0)
+        {
+            let setValue = "";
+            let iLength = value.length;
+
+            value += "00";
+            setValue = value.substring(0,iIndexOf);
+            setValue += value.substring(++iIndexOf, iIndexOf+2);
+
+            value = Number(setValue);
+        }
+        else {
+            value = Number(value) * 100;
+        }
+        
         return value
     },
 
