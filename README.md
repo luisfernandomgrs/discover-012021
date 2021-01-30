@@ -9,3 +9,16 @@
 <ol>
   <li>Implementei correções na função: formatAmount</li>
 </ol>
+
+<h2>Resultado do projeto</h2>
+<h3>Screen 01</h3>
+
+![financy-001](https://user-images.githubusercontent.com/72364037/106348231-70683180-62a3-11eb-9cb2-acb00354fab7.jpg)
+
+<h3>Screen 02</h3>
+
+![financy-002](https://user-images.githubusercontent.com/72364037/106348232-7100c800-62a3-11eb-9514-195a7f05b04e.jpg)
+
+<h3>Screen 03</h3>
+
+![financy-003](https://user-images.githubusercontent.com/72364037/106348233-71995e80-62a3-11eb-972e-153426f2a8a6.jpg)
