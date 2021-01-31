@@ -12,29 +12,20 @@ const Modal = {
     }
 }
 
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
+        // return []
+    },
+
+    set(transactions) {
+        localStorage.setItem("dev2.finances:transactions", 
+                             JSON.stringify(transactions))
+    }
+}
+
 const Transaction = {
-    all: [
-        {
-            description: 'Luz',
-            amount: -50000,
-            date: '23/01/2021'
-        },
-        {
-            description: 'WebSite',
-            amount: 500000,
-            date: '23/01/2021'
-        },
-        {
-            description: 'Internet',
-            amount: 20000,
-            date: '23/01/2021'
-        },
-        {
-            description: 'Serviços',
-            amount: 23500,
-            date: '28/01/2021'
-        }
-    ],
+    all: Storage.get(),
 
     add(transaction){
         Transaction.all.push(transaction)
@@ -79,12 +70,13 @@ const DOM = {
 
     addTransaction(ItemTransaction, index) {
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(ItemTransaction)        
+        tr.innerHTML = DOM.innerHTMLTransaction(ItemTransaction, index)
+        tr.dataset = index
 
         DOM.transactionsContainer.appendChild(tr)
     },
 
-    innerHTMLTransaction(tagItemValue){
+    innerHTMLTransaction(tagItemValue, index) {
         const CSSclass = tagItemValue.amount > 0 ? "income" : "expense"
         const amount = Utils.formatCurrency(tagItemValue.amount)
 
@@ -93,7 +85,7 @@ const DOM = {
             <td class="${CSSclass}">${amount}</td>
             <td class='date'>${tagItemValue.date}</td>
             <td>
-                <img src="./assets/minus.svg" alt="Remover Transação">
+                <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
             </td>
         `
 
@@ -239,11 +231,14 @@ const Form = {
 
 const App = {
     init(){
-        Transaction.all.forEach(transaction => {
-            DOM.addTransaction(transaction)
-        })
+        // Transaction.all.forEach((transaction, index) => {
+        //     DOM.addTransaction(transaction, index)
+        // })
+        Transaction.all.forEach(DOM.addTransaction)
 
         DOM.updateBalance()
+
+        Storage.set(transaction.all)
     },
     reload(){
         DOM.clearTransactions()
@@ -252,8 +247,6 @@ const App = {
 }
 
 App.init()
-
-
 
 
 /* Desafio - Criar uma função Toogle
