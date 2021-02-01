@@ -105,6 +105,7 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
+        /*
         //  valores como 1250,84 | 110,84 - 110,89... geram bug no valor calculado.
 
         let iIndexOf = 0;
@@ -126,8 +127,10 @@ const Utils = {
         else {
             value = Number(value) * 100;
         }
+        */
+       value *= 100
         
-        return value
+        return Math.round(value)
     },
 
     formatDate(date) {
