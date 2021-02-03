@@ -5,11 +5,6 @@
 <p>Este projeto é parte do bootcamp Discovery, promovido pela Rocketseat em Jan./2021.</p>
 <p>O objetivo é criar uma funcionadade para registrar um caixa contendo resumo das entradas e saídas, aplicando conceitos de persistência de dados em LocalStorage, Javascript, HTML e CSS</p>
 
-<h2>Minhas contribuições</h2>
-<ol>
-  <li>Implementei correções na função: formatAmount</li>
-</ol>
-
 <h2>Resultado do projeto</h2>
 <h3>Screen 01</h3>
 
